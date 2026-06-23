@@ -12,4 +12,4 @@ Or so:
 ![Desktop Preview](Screenshots/2026-06-23_14-55.png)
 
 Or so:
-![Desktop Preview](Screenshots/2026-06-23_14-06.png)
+![Desktop Preview](Screenshots/2026-06-23_15-06.png)
