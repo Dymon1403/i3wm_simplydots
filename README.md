@@ -13,3 +13,36 @@ Or so:
 
 Or so:
 ![Desktop Preview](Screenshots/2026-06-23_15-06.png)
+
+
+## Installation
+
+To install these dotfiles, follow these steps:
+
+1. **Clone the repository:**
+```bash
+
+    cd i3wm_simplydots
+
+    Make the installation script executable:
+
+   chmod +x install.sh
+
+    Run the script:
+
+   ./install.sh
+
+What are i wont??: 
+
+Make sure you have the following packages installed on your Arch Linux system:
+
+    polybar
+
+    picom
+
+    alacritty
+
+    neovim
+
+You can install them using:
+sudo pacman -S polybar picom alacritty neovim
