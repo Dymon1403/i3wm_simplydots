@@ -7,3 +7,9 @@ these could be dots for DWM, but so far I have a little difficulty with it, so I
 
 What it will look like:
 ![Desktop Preview](Screenshots/2026-06-23_14-53.png)
+
+Or so:
+![Desktop Preview](Screenshots/2026-06-23_14-55.png)
+
+Or so:
+![Desktop Preview](Screenshots/2026-06-23_14-06.png)
