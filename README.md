@@ -31,8 +31,10 @@ To install these dotfiles, follow these steps:
     Run the script:
 
    ./install.sh
+```markdown
 
-What are i wont??: 
+2. **What are i wont??:**
+```bash
 
 Make sure you have the following packages installed on your Arch Linux system:
 
@@ -43,6 +45,8 @@ Make sure you have the following packages installed on your Arch Linux system:
     alacritty
 
     neovim
+```markdown
+3. **You can install them using:**
+```bash
 
-You can install them using:
 sudo pacman -S polybar picom alacritty neovim
