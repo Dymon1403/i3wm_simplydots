@@ -21,20 +21,20 @@ To install these dotfiles, follow these steps:
 
 1. **Clone the repository:**
 ```bash
-
+    git clone https://github.com/Dymon1403/i3wm_simplydots.git
     cd i3wm_simplydots
+    chmod +x install.sh
 
-    Make the installation script executable:
+```
 
-   chmod +x install.sh
-
-    Run the script:
+ 2. **Run the script:**
+```bash
 
    ./install.sh
 
 ```
 
-2. **What are i wont??:**
+2.1 **What are i wont??:**
 ```bash
 Make sure you have the following packages installed on your Arch Linux system:
 
