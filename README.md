@@ -6,4 +6,4 @@ Sometimes in the life of any person there is a need to use a simple graphic envi
 these could be dots for DWM, but so far I have a little difficulty with it, so I will have to read the documentation a little. And maybe later upload them and that's it. For now, you can enjoy definitely not a crutch i3WM))))))
 
 What it will look like:
-[![Desktop Preview](screenshots/2026-06-23_14-53.png)](screenshots/2026-06-23_14-53.png)
+![Desktop Preview](Screenshots/2026-06-23_14-53.png)
