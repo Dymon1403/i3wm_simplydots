@@ -1,0 +1,226 @@
+#  /$$  /$$$$$$                                       /$$$$$$  /$$          
+# |__/ /$$__  $$                                     /$$__  $$|__/          
+#  /$$|__/  \ $$        /$$$$$$$  /$$$$$$  /$$$$$$$ | $$  \__/ /$$  /$$$$$$ 
+# | $$   /$$$$$/       /$$_____/ /$$__  $$| $$__  $$| $$$$    | $$ /$$__  $$
+# | $$  |___  $$      | $$      | $$  \ $$| $$  \ $$| $$_/    | $$| $$  \ $$
+# | $$ /$$  \ $$      | $$      | $$  | $$| $$  | $$| $$      | $$| $$  | $$
+# | $$|  $$$$$$/      |  $$$$$$$|  $$$$$$/| $$  | $$| $$      | $$|  $$$$$$$
+# |__/ \______/        \_______/ \______/ |__/  |__/|__/      |__/ \____  $$
+#                                                                  /$$  \ $$
+#                                                                 |  $$$$$$/
+#                                                                  \______/ 
+
+
+# liza LOL XD
+include ~/.cache/wal/colors-i3
+include ~/.config/i3/floating_rules_for_window
+
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# Windows or "super" key
+set $mod Mod4
+
+# exec_always --no-startup-id ~/.scripts/setup_monitors.sh
+
+# exec_always --no-startup-id sleep 2 && ~/.config/polybar/launch.
+
+exec_always --no-startup-id wal -R
+
+exec_always --no-startup-id libinput-gestures-setup start
+
+exec_always --no-startup-id polybar main &
+
+# is used in the bar {} block below.
+font pango:monospace 8
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+
+bindsym $mod+p exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
+
+bindsym $mod+o exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
+
+bindsym $mod+Shift+p exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
+bindsym $mod+Shift+o exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# set gaps around windows
+gaps inner 1
+gaps outer 1
+
+# remove borders for rounded corners
+for_window [class="^.*"] border pixel 1
+
+# kill focused window
+bindsym $mod+c kill
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Multi-split
+bindsym Control+x split toggle
+
+# enter fullscreen mode for the focused container
+bindsym $mod+Shift+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+bindsym $mod+Shift+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+
+set $ws1 "I"
+set $ws2 "II"
+set $ws3 "III"
+set $ws4 "IV"
+set $ws5 "V"
+set $ws6 "VI"
+set $ws7 "VII"
+set $ws8 "VIII"
+set $ws9 "IX"
+set $ws10 "X"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace  $ws1
+bindsym $mod+Shift+2 move container to workspace  $ws2
+bindsym $mod+Shift+3 move container to workspace  $ws3
+bindsym $mod+Shift+4 move container to workspace  $ws4
+bindsym $mod+Shift+5 move container to workspace  $ws5
+bindsym $mod+Shift+6 move container to workspace  $ws6
+bindsym $mod+Shift+7 move container to workspace  $ws7
+bindsym $mod+Shift+8 move container to workspace  $ws8
+bindsym $mod+Shift+9 move container to workspace  $ws9
+bindsym $mod+Shift+0 move container to workspace  $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# USER MODULES
+
+# start our emoji picker (https://github.com/fdw/rofimoji)
+bindsym $mod+d exec rofi -show drun -theme /home/dmitrj/.config/rofi/config.rasi
+
+
+# flamshot(screenshots)
+bindsym $mod+Delete exec flameshot gui
+
+# https://github.com/nwg-piotr/autotiling
+exec_always --no-startup-id autotiling
+
+# Keybinds Based formy(KBFM)
+bindsym $mod+q exec alacritty
+bindsym $mod+f exec firefox
+bindsym $mod+t exec telegram-desktop
+
+# Stupid shit for stupid kids
+bindsym $mod+l exec kitty
+
+# Start picom compositor
+exec_always picom --config ~/.config/picom/picom.conf
+
+# ==========================================
+# Цвета окон (Pywal)
+# ==========================================
+client.focused           $cl_active $cl_active $cl_foreground $cl_active $cl_active
+client.focused_inactive  $cl_inactive $cl_inactive $cl_foreground $cl_inactive $cl_inactive
+client.unfocused         $cl_inactive $cl_inactive $cl_foreground $cl_inactive $cl_inactive
+client.urgent            $cl_urgent $cl_urgent $cl_foreground $cl_urgent $cl_urgent
+client.focused           $cl_active $cl_active $cl_foreground $cl_active $cl_active
+client.focused_inactive  $cl_inactive $cl_inactive $cl_foreground $cl_inactive $cl_inactive
+client.unfocused         $cl_inactive $cl_inactive $cl_foreground $cl_inactive $cl_inactive
+client.urgent            $cl_urgent $cl_urgent $cl_foreground $cl_urgent $cl_urgent
+client.placeholder       #000000 #0c0c0c #ffffff #000000 #0c0c0c
+client.background        #0c0c0c
+
+# ThinkPad`s Bindkeys (Fn + ..) 
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
+
+
+bindsym XF86MonBrightnessUp   exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym XF86ScreenSaver exec i3lock \
+    --nofork \
+    --blur 7 \
+    --inside-color=00000000 \
+    --ring-color=00000000 \
+    --keyhl-color=00ff00ff \
+    --ringver-color=00ff00ff \
+    --ringwrong-color=ff0000ff \
+    --insidever-color=00000000 \
+    --insidewrong-color=00000000 \
+    --separator-color=00000000 \
+    --radius=120 \
+    --ring-width=10 \
+    --verif-text="" \
+    --wrong-text="" \
+    --noinput-text=""
