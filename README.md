@@ -54,3 +54,4 @@ Make sure you have the following packages installed on your Arch Linux system:
 sudo pacman -S polybar picom alacritty neovim
 
 ```
+P.S. i used him on Thikpad T430
