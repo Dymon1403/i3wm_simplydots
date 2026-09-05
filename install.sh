@@ -5,20 +5,17 @@ set -e
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 DIRS=("alacritty" "i3" "nvim" "picom" "polybar")
 
-
 mkdir -p ~/.config
 
 for dir in "${DIRS[@]}"; do
     if [ -d "$DOTFILES_DIR/$dir" ]; then
-        
         if [ -d "$HOME/.config/$dir" ]; then
             cp -r "$HOME/.config/$dir" "$HOME/.config/${dir}.bak"
+            rm -rf "$HOME/.config/$dir"
         fi
         
-        mkdir -p "$HOME/.config/$dir"
-        cp -r "$DOTFILES_DIR/$dir/." "$HOME/.config/$dir/"
+        cp -r "$DOTFILES_DIR/$dir" "$HOME/.config/"
     else
-
     fi
 done
 
