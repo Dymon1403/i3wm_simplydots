@@ -16,6 +16,7 @@ for dir in "${DIRS[@]}"; do
         
         cp -r "$DOTFILES_DIR/$dir" "$HOME/.config/"
     else
+        echo "==> Warning: $dir not found in repo, skipping." 
     fi
 done
 
