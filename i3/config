@@ -11,19 +11,11 @@
 #                                                                  \______/ 
 
 
-# liza LOL XD
-include ~/.cache/wal/colors-i3
-include ~/.config/i3/floating_rules_for_window
-
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Windows or "super" key
 set $mod Mod4
-
-# exec_always --no-startup-id ~/.scripts/setup_monitors.sh
-
-# exec_always --no-startup-id sleep 2 && ~/.config/polybar/launch.
 
 exec_always --no-startup-id wal -R
 
@@ -34,8 +26,6 @@ exec_always --no-startup-id polybar main &
 # is used in the bar {} block below.
 font pango:monospace 8
 
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
 # screen before suspend. Use loginctl lock-session to lock your screen.
