@@ -1,22 +1,30 @@
 #!/bin/bash
 
-DOTFILES_DIR=$(pwd)
+set -e
 
-echo "Starting to installing configs..."
-
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 DIRS=("alacritty" "i3" "nvim" "picom" "polybar")
 
+
+mkdir -p ~/.config
+
 for dir in "${DIRS[@]}"; do
-    echo "Intalling configs for $dir..."
-    
-    mkdir -p ~/.config/$dir
-    
-    cp -r $DOTFILES_DIR/$dir/* ~/.config/$dir/
+    if [ -d "$DOTFILES_DIR/$dir" ]; then
+        
+        if [ -d "$HOME/.config/$dir" ]; then
+            cp -r "$HOME/.config/$dir" "$HOME/.config/${dir}.bak"
+        fi
+        
+        mkdir -p "$HOME/.config/$dir"
+        cp -r "$DOTFILES_DIR/$dir/." "$HOME/.config/$dir/"
+    else
+
+    fi
 done
 
 if [ -f "$DOTFILES_DIR/.bashrc" ]; then
-    echo "Installing .bashrc..."
-    cp $DOTFILES_DIR/.bashrc ~/.bashrc
+    [ -f "$HOME/.bashrc" ] && cp "$HOME/.bashrc" "$HOME/.bashrc.bak"
+    cp "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
 fi
 
-echo "Successfully! Reboot your session"
+echo "==> Successfully installed! Restart your i3 session (Mod+Shift+R)."
